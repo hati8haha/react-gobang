@@ -57,8 +57,8 @@ const WhiteStone = () => {
 const FakeRow = () => {
   return (
     <div>
-      {fakeEmptyArray.map(() => (
-        <Square />
+      {fakeEmptyArray.map((index) => (
+        <Square key={index} />
       ))}
     </div>
   )
@@ -66,8 +66,8 @@ const FakeRow = () => {
 const FakeBoard = () => {
   return (
     <FakeBoardFrame>
-      {fakeEmptyArray.map(() => (
-        <FakeRow />
+      {fakeEmptyArray.map((index) => (
+        <FakeRow key={index} />
       ))}
     </FakeBoardFrame>
   )
@@ -128,7 +128,7 @@ const countStones = (
       ? pointOnAxis + 4 * direction <= border
       : pointOnAxis + 4 * direction >= border
 
-  const jLimit = borderCond ? 5 * direction : border - pointOnAxis * direction
+  const jLimit = borderCond ? 5 * direction : (border - pointOnAxis) + direction
   for (
     let j = direction;
     direction > 0 ? j < jLimit : j > jLimit;
